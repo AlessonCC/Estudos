@@ -21,9 +21,14 @@ class HomePageState extends State<HomePage> {
         title: Text('Home Page'),
         actions: [CustomSwitch()],
       ),
-      body: Align(
-        alignment: Alignment.topLeft,
-        child: CustomSwitch(),
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [Text('Contador $count'), CustomSwitch()],
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
