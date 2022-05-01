@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:manual_de_sobrevivencia/login_page.dart';
 
 import 'app_controller.dart';
 import 'home_page.dart';
@@ -16,7 +17,7 @@ class AppWidget extends StatelessWidget {
                 ? Brightness.dark
                 : Brightness.light,
           ),
-          home: HomePage(),
+          home: LoginPage(),
         );
       },
     );
