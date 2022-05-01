@@ -17,13 +17,13 @@ class _LoginPageState extends State<LoginPage> {
   String email = '';
   String password = '';
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: SizedBox(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
+  Widget _body() {
+    return SingleChildScrollView(
+      child: SizedBox(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -56,7 +56,7 @@ class _LoginPageState extends State<LoginPage> {
               SizedBox(height: 15),
               RaisedButton(
                 onPressed: () {
-                  if (email == 'alesson' && password == '123') {
+                  if (email == '' && password == '') {
                     Navigator.of(context).pushReplacementNamed('/home');
                   } else {
                     print("Login ou senha incorreto");
@@ -69,5 +69,24 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
     );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        body: Stack(
+      children: [
+        SizedBox(
+            height: MediaQuery.of(context).size.height,
+            child: Image.asset(
+              'assets/images/ImageTi.png',
+              fit: BoxFit.cover,
+            )),
+        Container(
+          color: Colors.black.withOpacity(0.1),
+        ),
+        _body(),
+      ],
+    ));
   }
 }
