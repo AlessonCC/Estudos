@@ -30,7 +30,7 @@ class _LoginPageState extends State<LoginPage> {
               Container(
                 width: 200,
                 height: 200,
-                child: Image.asset('assets/images/IfsLogo.png'),
+                child: Image.asset('assets/images/IfsLogo.jpg'),
               ),
               Container(height: 50),
               TextField(
