@@ -26,25 +26,32 @@ class HomePageState extends State<HomePage> {
             ListTile(
               leading: const Icon(Icons.home),
               title: const Text('Home'),
+              subtitle: const Text('Pagina Inicial'),
               onTap: () {
                 // ignore: avoid_print
-                print('home');
+                Navigator.of(context).pushReplacementNamed('/home');
               },
             ),
             ListTile(
-              leading: const Icon(Icons.home),
+              leading: const Icon(Icons.settings),
+              title: const Text('Settings'),
+              subtitle: const Text('Configurações'),
+              onTap: () {},
+            ),
+            ListTile(
+              leading: const Icon(Icons.logout),
               title: const Text('Logout'),
               subtitle: const Text('Finalizar Sessão'),
               onTap: () {
                 Navigator.of(context).pushReplacementNamed('/');
               },
-            )
+            ),
           ],
         ),
       ),
       appBar: AppBar(
         title: const Text('Home Page'),
-        actions: [CustomSwitch()],
+        actions: const [CustomSwitch()],
       ),
       body: SizedBox(
         width: double.infinity,
