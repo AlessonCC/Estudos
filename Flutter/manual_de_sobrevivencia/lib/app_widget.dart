@@ -5,6 +5,8 @@ import 'app_controller.dart';
 import 'home_page.dart';
 
 class AppWidget extends StatelessWidget {
+  const AppWidget({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
@@ -19,7 +21,7 @@ class AppWidget extends StatelessWidget {
           ),
           initialRoute: '/',
           routes: {
-            '/': (context) => LoginPage(),
+            '/': (context) => const LoginPage(),
             '/home': (context) => HomePage(),
           },
         );

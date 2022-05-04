@@ -1,13 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'app_controller.dart';
 
 class HomePage extends StatefulWidget {
   @override
+  // ignore: no_logic_in_create_state
   State<HomePage> createState() {
     return HomePageState();
-    throw UnimplementedError();
   }
 }
 
@@ -22,19 +21,20 @@ class HomePageState extends State<HomePage> {
           children: [
             UserAccountsDrawerHeader(
                 currentAccountPicture: Image.asset('assets/images/NonUser.jpg'),
-                accountName: Text('Login User'),
-                accountEmail: Text('Email User')),
+                accountName: const Text('Login User'),
+                accountEmail: const Text('Email User')),
             ListTile(
-              leading: Icon(Icons.home),
-              title: Text('Home'),
+              leading: const Icon(Icons.home),
+              title: const Text('Home'),
               onTap: () {
+                // ignore: avoid_print
                 print('home');
               },
             ),
             ListTile(
-              leading: Icon(Icons.home),
-              title: Text('Logout'),
-              subtitle: Text('Finalizar Sessão'),
+              leading: const Icon(Icons.home),
+              title: const Text('Logout'),
+              subtitle: const Text('Finalizar Sessão'),
               onTap: () {
                 Navigator.of(context).pushReplacementNamed('/');
               },
@@ -43,10 +43,10 @@ class HomePageState extends State<HomePage> {
         ),
       ),
       appBar: AppBar(
-        title: Text('Home Page'),
+        title: const Text('Home Page'),
         actions: [CustomSwitch()],
       ),
-      body: Container(
+      body: SizedBox(
         width: double.infinity,
         height: double.infinity,
         child: ListView(
@@ -55,13 +55,13 @@ class HomePageState extends State<HomePage> {
           children: [
             Text('Contador $count'),
             Container(height: 550),
-            CustomSwitch(),
+            const CustomSwitch(),
             Text('Contador $count'),
             Container(height: 550),
-            CustomSwitch(),
+            const CustomSwitch(),
             Text('Contador $count'),
             Container(height: 550),
-            CustomSwitch(),
+            const CustomSwitch(),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -75,7 +75,7 @@ class HomePageState extends State<HomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
         onPressed: () {
           setState(() {
             count++;
@@ -87,6 +87,8 @@ class HomePageState extends State<HomePage> {
 }
 
 class CustomSwitch extends StatelessWidget {
+  const CustomSwitch({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Switch(

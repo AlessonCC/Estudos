@@ -1,10 +1,6 @@
 // ignore_for_file: deprecated_member_use
 
-import 'dart:async';
-
 import 'package:flutter/material.dart';
-
-import 'home_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -27,7 +23,7 @@ class _LoginPageState extends State<LoginPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(
+              SizedBox(
                 width: 200,
                 height: 200,
                 child: Image.asset('assets/images/IfsLogo.jpeg'),
@@ -43,18 +39,19 @@ class _LoginPageState extends State<LoginPage> {
                           email = text;
                         },
                         keyboardType: TextInputType.emailAddress,
+                        // ignore: prefer_const_constructors
                         decoration: InputDecoration(
                           labelText: 'Login',
-                          border: OutlineInputBorder(),
+                          border: const OutlineInputBorder(),
                         ),
                       ),
-                      SizedBox(height: 5),
+                      const SizedBox(height: 5),
                       TextField(
                           onChanged: (text) {
                             password = text;
                           },
                           obscureText: true,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             border: OutlineInputBorder(),
                             labelText: 'Password',
                           )),
@@ -70,7 +67,7 @@ class _LoginPageState extends State<LoginPage> {
                     print("Login ou senha incorreto");
                   }
                 },
-                child: Text('Entrar'),
+                child: const Text('Entrar'),
               )
             ],
           ),
