@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 
 import 'app_controller.dart';
@@ -20,7 +22,10 @@ class HomePageState extends State<HomePage> {
         child: Column(
           children: [
             UserAccountsDrawerHeader(
-                currentAccountPicture: Image.asset('assets/images/NonUser.jpg'),
+                currentAccountPicture: ClipRRect(
+                  borderRadius: BorderRadius.circular(40),
+                  child: Image.asset('assets/images/NonUser.jpg'),
+                ),
                 accountName: const Text('Login User'),
                 accountEmail: const Text('Email User')),
             ListTile(
@@ -46,6 +51,11 @@ class HomePageState extends State<HomePage> {
                 Navigator.of(context).pushReplacementNamed('/');
               },
             ),
+            ListTile(
+                leading: CustomSwitch(),
+                title: Text('Dark Mode'),
+                subtitle: Text('Modo Noturno'),
+                onTap: () {}),
           ],
         ),
       ),
