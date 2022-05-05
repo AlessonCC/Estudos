@@ -68,14 +68,8 @@ class HomePageState extends State<HomePage> {
         height: double.infinity,
         child: ListView(
           //mainAxisAlignment: MainAxisAlignment.center,
-          //crossAxisAlignment: CrossAxisAlignment.start,
+          //crossAxisAlignment: CrossAxisAlignment.start
           children: [
-            Text('Contador $count'),
-            Container(height: 550),
-            const CustomSwitch(),
-            Text('Contador $count'),
-            Container(height: 550),
-            const CustomSwitch(),
             Text('Contador $count'),
             Container(height: 550),
             const CustomSwitch(),
