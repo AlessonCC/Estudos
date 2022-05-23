@@ -61,7 +61,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
               RaisedButton(
                 onPressed: () {
-                  if (email == 'a' && password == 'a') {
+                  if (email == '' && password == '') {
                     Navigator.of(context).pushReplacementNamed('/home');
                   } else {
                     print("Login ou senha incorreto");
