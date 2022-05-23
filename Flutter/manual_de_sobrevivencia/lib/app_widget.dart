@@ -24,6 +24,7 @@ class AppWidget extends StatelessWidget {
             '/': (context) => const LoginPage(),
             '/home': (context) => HomePage(),
           },
+          debugShowCheckedModeBanner: false,
         );
       },
     );

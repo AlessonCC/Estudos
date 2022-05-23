@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "481112771239",
+    "project_id": "manual-de-sobrevivencia2-0",
+    "storage_bucket": "manual-de-sobrevivencia2-0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:481112771239:android:cf3bec45d42795abdc2982",
+        "android_client_info": {
+          "package_name": "com.example.manual_de_sobrevivencia"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "481112771239-hkrnmqpvvs588e6n1eqg6kej5j62l955.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC2pGIre-dd4X4TyBwMWZFwsoz2FSd1_lA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "481112771239-hkrnmqpvvs588e6n1eqg6kej5j62l955.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
