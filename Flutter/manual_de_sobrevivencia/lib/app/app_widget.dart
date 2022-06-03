@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:manual_de_sobrevivencia/login_page.dart';
+import 'package:manual_de_sobrevivencia/app/login_page.dart';
 
 import 'app_controller.dart';
 import 'home_page.dart';
@@ -14,7 +14,7 @@ class AppWidget extends StatelessWidget {
       builder: (animation, builder) {
         return MaterialApp(
           theme: ThemeData(
-            primarySwatch: Colors.red,
+            primarySwatch: const Color.fromRGBO(25, 81, 40, 1),
             brightness: AppController.instance.isDarkTheme
                 ? Brightness.dark
                 : Brightness.light,

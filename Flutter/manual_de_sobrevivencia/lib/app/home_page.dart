@@ -59,10 +59,7 @@ class HomePageState extends State<HomePage> {
           ],
         ),
       ),
-      appBar: AppBar(
-        title: const Text('Home Page'),
-        actions: const [CustomSwitch()],
-      ),
+      appBar: AppBar(title: const Text('Home Page')),
       body: SizedBox(
         width: double.infinity,
         height: double.infinity,
@@ -71,8 +68,8 @@ class HomePageState extends State<HomePage> {
           //crossAxisAlignment: CrossAxisAlignment.start
           children: [
             Text('Contador $count'),
-            Container(height: 550),
-            const CustomSwitch(),
+            Container(height: 10),
+            Text('Insert Text'),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               crossAxisAlignment: CrossAxisAlignment.center,
