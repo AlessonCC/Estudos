@@ -62,11 +62,12 @@ class _LoginPageState extends State<LoginPage> {
               RaisedButton(
                 onPressed: () {
                   if (email == '' && password == '') {
-                    Navigator.of(context).pushReplacementNamed('/home');
+                    Navigator.of(context)
+                        .pushReplacementNamed('/loginAuthenticate');
                   } else {
                     ListView(children: [
                       Container(height: 10),
-                      Text('Insert Text'),
+                      const Text('Insert Text'),
                     ]);
                   }
                 },
