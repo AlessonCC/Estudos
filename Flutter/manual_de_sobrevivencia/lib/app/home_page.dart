@@ -1,10 +1,10 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 
-import 'app_controller.dart';
+import '../controls/app_controller.dart';
 
 class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
+
   @override
   // ignore: no_logic_in_create_state
   State<HomePage> createState() {
@@ -52,9 +52,9 @@ class HomePageState extends State<HomePage> {
               },
             ),
             ListTile(
-                leading: CustomSwitch(),
-                title: Text('Dark Mode'),
-                subtitle: Text('Modo Noturno'),
+                leading: const CustomSwitch(),
+                title: const Text('Dark Mode'),
+                subtitle: const Text('Modo Noturno'),
                 onTap: () {}),
           ],
         ),
@@ -69,7 +69,7 @@ class HomePageState extends State<HomePage> {
           children: [
             Text('Contador $count'),
             Container(height: 10),
-            Text('Insert Text'),
+            const Text('Insert Text'),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               crossAxisAlignment: CrossAxisAlignment.center,
