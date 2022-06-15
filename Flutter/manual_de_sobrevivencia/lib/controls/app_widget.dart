@@ -25,7 +25,7 @@ class AppWidget extends StatelessWidget {
           routes: {
             '/': (context) => const LoginPage(),
             '/loginAuthenticate': (context) => const Splash(),
-            '/home': (context) => const HomePage(),
+            '/home': (context) => HomePage(),
           },
           debugShowCheckedModeBanner: false,
         );

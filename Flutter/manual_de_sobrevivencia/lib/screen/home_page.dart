@@ -52,9 +52,9 @@ class HomePageState extends State<HomePage> {
               },
             ),
             ListTile(
-                leading: const CustomSwitch(),
-                title: const Text('Dark Mode'),
-                subtitle: const Text('Modo Noturno'),
+                leading: CustomSwitch(),
+                title: Text('Dark Mode'),
+                subtitle: Text('Modo Noturno'),
                 onTap: () {}),
           ],
         ),
