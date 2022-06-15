@@ -14,6 +14,8 @@ class _LoginPageState extends State<LoginPage> {
   Color bottomColor = const Color.fromARGB(255, 255, 255, 255);
   String email = '';
   String password = '';
+  // ignore: non_constant_identifier_names
+  bool ContinueConnected = false;
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +39,7 @@ class _LoginPageState extends State<LoginPage> {
               padding: const EdgeInsets.all(10.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   SizedBox(
                     width: 200,
@@ -44,7 +47,7 @@ class _LoginPageState extends State<LoginPage> {
                     child: Image.asset('assets/images/IfsLogo.jpeg'),
                   ),
                   Container(height: 50),
-                  Card(
+                  Form(
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Column(
@@ -62,17 +65,44 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                           const SizedBox(height: 5),
                           TextField(
-                              onChanged: (text) {
-                                password = text;
-                              },
-                              obscureText: true,
-                              decoration: const InputDecoration(
-                                border: OutlineInputBorder(),
-                                labelText: 'Password',
-                              )),
+                            onChanged: (text) {
+                              password = text;
+                            },
+                            obscureText: true,
+                            decoration: const InputDecoration(
+                              border: OutlineInputBorder(),
+                              labelText: 'Password',
+                            ),
+                          ),
                         ],
                       ),
                     ),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.only(bottom: 7),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      print('Clicou');
+                    },
+                    child: const Text(
+                      'Forget Password?',
+                      style: TextStyle(fontSize: 12),
+                      textAlign: TextAlign.right,
+                    ),
+                  ),
+                  Row(
+                    children: [
+                      Checkbox(
+                        value: ContinueConnected,
+                        onChanged: (bool? newValue) {
+                          setState(() {
+                            ContinueConnected = newValue!;
+                          });
+                        },
+                      ),
+                      const Text("Continue Connected?"),
+                    ],
                   ),
                   RaisedButton(
                     onPressed: () {
@@ -86,7 +116,34 @@ class _LoginPageState extends State<LoginPage> {
                         ]);
                       }
                     },
-                    child: const Text('Entrar'),
+                    child: const Text(
+                      'Login',
+                      style: TextStyle(
+                        color: Color.fromARGB(255, 0, 0, 0),
+                        fontSize: 20,
+                      ),
+                    ),
+                  ),
+                  const Padding(padding: EdgeInsets.only(bottom: 18)),
+                  RaisedButton(
+                    onPressed: () {
+                      if (email == '' && password == '') {
+                        Navigator.of(context)
+                            .pushReplacementNamed('/loginAuthenticate');
+                      } else {
+                        ListView(children: [
+                          Container(height: 10),
+                          const Text('Insert Text'),
+                        ]);
+                      }
+                    },
+                    child: const Text(
+                      'Register Now!',
+                      style: TextStyle(
+                        color: Color.fromARGB(255, 0, 0, 0),
+                        fontSize: 20,
+                      ),
+                    ),
                   )
                 ],
               ),
