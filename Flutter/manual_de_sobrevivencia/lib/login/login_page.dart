@@ -25,8 +25,8 @@ class _LoginPageState extends State<LoginPage> {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              CustomColors().getTopColor(),
-              CustomColors().getButtomColor(),
+              CustomColors().getGradientTopColor(),
+              CustomColors().getGradientButtomColor(),
             ],
           ),
         ),
@@ -140,8 +140,8 @@ class _LoginPageState extends State<LoginPage> {
                   RaisedButton(
                     onPressed: () {
                       if (email == '' && password == '') {
-                        //Navigator.of(context)
-                        //   .pushReplacementNamed('/loginAuthenticate');
+                        Navigator.of(context)
+                            .pushReplacementNamed('/registerPage');
                       } else {
                         ListView(children: [
                           Container(height: 10),
