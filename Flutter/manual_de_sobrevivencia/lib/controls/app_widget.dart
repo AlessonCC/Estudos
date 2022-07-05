@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:manual_de_sobrevivencia/login/login_page.dart';
 import 'package:manual_de_sobrevivencia/controls/splash.dart';
+import 'package:manual_de_sobrevivencia/screen/Screen.dart';
 
 import '../login/login_page.dart';
 import 'app_controller.dart';
@@ -21,9 +22,9 @@ class AppWidget extends StatelessWidget {
                 ? Brightness.dark
                 : Brightness.light,
           ),
-          initialRoute: '/',
+          initialRoute: Login().address,
           routes: {
-            '/': (context) => const LoginPage(),
+            Login().address: (context) => const LoginPage(),
             '/loginAuthenticate': (context) => const Splash(),
             '/home': (context) => HomePage(),
           },

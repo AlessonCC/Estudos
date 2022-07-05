@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:manual_de_sobrevivencia/screen/Screen.dart';
 
 import '../controls/app_controller.dart';
 
@@ -48,7 +49,7 @@ class HomePageState extends State<HomePage> {
               title: const Text('Logout'),
               subtitle: const Text('Finalizar Sessão'),
               onTap: () {
-                Navigator.of(context).pushReplacementNamed('/');
+                Navigator.of(context).pushReplacementNamed(Login().address);
               },
             ),
             ListTile(

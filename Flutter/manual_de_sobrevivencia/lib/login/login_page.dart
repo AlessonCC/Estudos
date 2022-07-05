@@ -1,6 +1,7 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
+import 'package:manual_de_sobrevivencia/values/custom_colors.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -10,8 +11,6 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  Color topColor = const Color.fromARGB(255, 15, 155, 15);
-  Color bottomColor = const Color.fromARGB(255, 255, 255, 255);
   String email = '';
   String password = '';
   // ignore: non_constant_identifier_names
@@ -26,8 +25,8 @@ class _LoginPageState extends State<LoginPage> {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              topColor,
-              bottomColor,
+              CustomColors().getTopColor(),
+              CustomColors().getButtomColor(),
             ],
           ),
         ),
@@ -36,7 +35,7 @@ class _LoginPageState extends State<LoginPage> {
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
             child: Padding(
-              padding: const EdgeInsets.all(10.0),
+              padding: const EdgeInsets.all(20.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -123,13 +122,26 @@ class _LoginPageState extends State<LoginPage> {
                         fontSize: 20,
                       ),
                     ),
+                    color: CustomColors().getActivePrimaryButtonColor(),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(50)),
                   ),
-                  const Padding(padding: EdgeInsets.only(bottom: 18)),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(vertical: 10.0),
+                    child: Divider(
+                      color: Colors.black,
+                    ),
+                  ),
+                  const Text(
+                    "Do not have an account?",
+                    textAlign: TextAlign.left,
+                    style: TextStyle(fontSize: 12),
+                  ),
                   RaisedButton(
                     onPressed: () {
                       if (email == '' && password == '') {
-                        Navigator.of(context)
-                            .pushReplacementNamed('/loginAuthenticate');
+                        //Navigator.of(context)
+                        //   .pushReplacementNamed('/loginAuthenticate');
                       } else {
                         ListView(children: [
                           Container(height: 10),
@@ -138,13 +150,16 @@ class _LoginPageState extends State<LoginPage> {
                       }
                     },
                     child: const Text(
-                      'Register Now!',
+                      'Register',
                       style: TextStyle(
                         color: Color.fromARGB(255, 0, 0, 0),
                         fontSize: 20,
                       ),
                     ),
-                  )
+                    color: CustomColors().getActiveSecondButton(),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(50)),
+                  ),
                 ],
               ),
             ),
