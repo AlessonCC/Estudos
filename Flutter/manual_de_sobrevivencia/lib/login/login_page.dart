@@ -1,7 +1,13 @@
 // ignore_for_file: deprecated_member_use
 
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:manual_de_sobrevivencia/values/custom_colors.dart';
+import 'package:manual_de_sobrevivencia/values/preferences_keys.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import '../models/userModels.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -11,6 +17,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  TextEditingController _mailInputController = TextEditingController();
+  TextEditingController _passwordInputController = TextEditingController();
   String email = '';
   String password = '';
   // ignore: non_constant_identifier_names
@@ -52,6 +60,7 @@ class _LoginPageState extends State<LoginPage> {
                       child: Column(
                         children: [
                           TextField(
+                            controller: _mailInputController,
                             onChanged: (text) {
                               email = text;
                             },
@@ -64,6 +73,7 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                           const SizedBox(height: 5),
                           TextField(
+                            controller: _passwordInputController,
                             onChanged: (text) {
                               password = text;
                             },
@@ -105,6 +115,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   RaisedButton(
                     onPressed: () {
+                      _doLogin();
                       if (email == '' && password == '') {
                         Navigator.of(context)
                             .pushReplacementNamed('/loginAuthenticate');
@@ -167,5 +178,27 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
     );
+  }
+
+  void _doLogin() async {
+    String mailForm = _mailInputController.text;
+    String passwordForm = _passwordInputController.text;
+
+    User savedUser = await _getSavedUser();
+    if (mailForm == savedUser.mail && passwordForm == savedUser.password) {
+      print("Login Efetuado Com Sucesso!");
+    } else {
+      print("Login ou Senha Incorretos");
+    }
+  }
+
+  Future<User> _getSavedUser() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    String? jsonUser = preferences.getString(PreferencesKeys.activeUser);
+
+    Map<String, dynamic> mapUser = jsonDecode(jsonUser!);
+    User user = User.fromJson(mapUser);
+
+    return user;
   }
 }

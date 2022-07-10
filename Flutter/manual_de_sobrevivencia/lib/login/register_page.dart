@@ -1,6 +1,13 @@
+// ignore_for_file: deprecated_member_use
+
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:manual_de_sobrevivencia/models/userModels.dart';
 import 'package:manual_de_sobrevivencia/screen/Screen.dart';
 import 'package:manual_de_sobrevivencia/values/custom_colors.dart';
+import 'package:manual_de_sobrevivencia/values/preferences_keys.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -10,6 +17,12 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  TextEditingController _nameInputController = TextEditingController();
+  TextEditingController _mailInputController = TextEditingController();
+  TextEditingController _passwordInputController = TextEditingController();
+  TextEditingController _confirmPasswordInputController =
+      TextEditingController();
+
   bool _showPassword = false;
   @override
   Widget build(BuildContext context) {
@@ -39,6 +52,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 child: Column(
                   children: [
                     TextFormField(
+                      controller: _nameInputController,
                       autofocus: true,
                       style: const TextStyle(color: Colors.black),
                       decoration: const InputDecoration(
@@ -57,6 +71,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                     ),
                     TextFormField(
+                      controller: _mailInputController,
                       autofocus: true,
                       style: const TextStyle(color: Colors.black),
                       decoration: const InputDecoration(
@@ -75,6 +90,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                     ),
                     TextFormField(
+                      controller: _passwordInputController,
                       obscureText: (_showPassword == true) ? false : true,
                       autofocus: true,
                       style: const TextStyle(color: Colors.black),
@@ -94,6 +110,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                     ),
                     TextFormField(
+                      controller: _confirmPasswordInputController,
                       obscureText: (_showPassword == true) ? false : true,
                       autofocus: true,
                       style: const TextStyle(color: Colors.black),
@@ -130,9 +147,10 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
               RaisedButton(
                 onPressed: () {
+                  _doSingUp();
                   Navigator.of(context).pushReplacementNamed(Login().address);
                 },
-                child: Text("Register Now!"),
+                child: const Text("Register Now!"),
                 color: CustomColors().getActiveSecondButton(),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(50)),
@@ -141,6 +159,25 @@ class _RegisterPageState extends State<RegisterPage> {
           ),
         ),
       ),
+    );
+  }
+
+  void _doSingUp() {
+    User newUser = User(
+      name: _nameInputController.text,
+      mail: _mailInputController.text,
+      password: _passwordInputController.text,
+      keepOn: true,
+    );
+    print(newUser);
+    _saveUser(newUser);
+  }
+
+  void _saveUser(User user) async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    preferences.setString(
+      PreferencesKeys.activeUser,
+      json.encode(user.toJson()),
     );
   }
 }
