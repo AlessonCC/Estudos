@@ -187,6 +187,8 @@ class _LoginPageState extends State<LoginPage> {
     User savedUser = await _getSavedUser();
     if (mailForm == savedUser.mail && passwordForm == savedUser.password) {
       print("Login Efetuado Com Sucesso!");
+      Navigator.of(context)
+                            .pushReplacementNamed('/loginAuthenticate');
     } else {
       print("Login ou Senha Incorretos");
     }
