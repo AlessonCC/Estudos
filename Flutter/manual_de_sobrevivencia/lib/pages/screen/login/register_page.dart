@@ -5,10 +5,10 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../../shared/models/userModels.dart';
+import '../../../shared/models/login_model.dart';
 import '../../../shared/values/custom_colors.dart';
 import '../../../shared/values/preferences_keys.dart';
-import '../Screen.dart';
+import '../Screen_page.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -165,7 +165,7 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   void _doSingUp() {
-    User newUser = User(
+    LoginModel newUser = LoginModel(
       name: _nameInputController.text,
       mail: _mailInputController.text,
       password: _passwordInputController.text,
@@ -176,7 +176,7 @@ class _RegisterPageState extends State<RegisterPage> {
     _saveUser(newUser);
   }
 
-  void _saveUser(User user) async {
+  void _saveUser(LoginModel user) async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     preferences.setString(
       PreferencesKeys.activeUser,

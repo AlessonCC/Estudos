@@ -5,7 +5,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../../shared/models/userModels.dart';
+import '../../../shared/models/login_model.dart';
 import '../../../shared/values/custom_colors.dart';
 import '../../../shared/values/preferences_keys.dart';
 
@@ -184,22 +184,21 @@ class _LoginPageState extends State<LoginPage> {
     String mailForm = _mailInputController.text;
     String passwordForm = _passwordInputController.text;
 
-    User savedUser = await _getSavedUser();
+    LoginModel savedUser = await _getSavedUser();
     if (mailForm == savedUser.mail && passwordForm == savedUser.password) {
       print("Login Efetuado Com Sucesso!");
-      Navigator.of(context)
-                            .pushReplacementNamed('/loginAuthenticate');
+      Navigator.of(context).pushReplacementNamed('/loginAuthenticate');
     } else {
       print("Login ou Senha Incorretos");
     }
   }
 
-  Future<User> _getSavedUser() async {
+  Future<LoginModel> _getSavedUser() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     String? jsonUser = preferences.getString(PreferencesKeys.activeUser);
 
     Map<String, dynamic> mapUser = jsonDecode(jsonUser!);
-    User user = User.fromJson(mapUser);
+    LoginModel user = LoginModel.fromJson(mapUser);
 
     return user;
   }
