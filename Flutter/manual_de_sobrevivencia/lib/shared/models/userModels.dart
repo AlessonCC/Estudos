@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 class User {
   String? name;
   String? mail;
@@ -14,14 +16,15 @@ class User {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['name'] = this.name;
-    data['mail'] = this.mail;
-    data['password'] = this.password;
-    data['keepOn'] = this.keepOn;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['name'] = name;
+    data['mail'] = mail;
+    data['password'] = password;
+    data['keepOn'] = keepOn;
     return data;
   }
 
+  @override
   String toString() {
     return "Name: " + name! + "\nE-mail: " + mail! + "\nPassword: " + password!;
   }

@@ -18,10 +18,11 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-  TextEditingController _nameInputController = TextEditingController();
-  TextEditingController _mailInputController = TextEditingController();
-  TextEditingController _passwordInputController = TextEditingController();
-  TextEditingController _confirmPasswordInputController =
+  final TextEditingController _nameInputController = TextEditingController();
+  final TextEditingController _mailInputController = TextEditingController();
+  final TextEditingController _passwordInputController =
+      TextEditingController();
+  final TextEditingController _confirmPasswordInputController =
       TextEditingController();
 
   bool _showPassword = false;
@@ -170,6 +171,7 @@ class _RegisterPageState extends State<RegisterPage> {
       password: _passwordInputController.text,
       keepOn: true,
     );
+    // ignore: avoid_print
     print(newUser);
     _saveUser(newUser);
   }

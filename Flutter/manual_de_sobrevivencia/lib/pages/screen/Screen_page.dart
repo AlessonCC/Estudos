@@ -1,4 +1,5 @@
-// ignore: unused_import
+// ignore_for_file: unused_import, file_names
+
 import 'package:flutter/cupertino.dart';
 
 abstract class Screen {
