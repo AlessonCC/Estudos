@@ -3,11 +3,12 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:manual_de_sobrevivencia/models/userModels.dart';
-import 'package:manual_de_sobrevivencia/screen/Screen.dart';
-import 'package:manual_de_sobrevivencia/values/custom_colors.dart';
-import 'package:manual_de_sobrevivencia/values/preferences_keys.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../../shared/models/userModels.dart';
+import '../../../shared/values/custom_colors.dart';
+import '../../../shared/values/preferences_keys.dart';
+import '../Screen.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);

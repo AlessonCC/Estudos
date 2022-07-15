@@ -25,7 +25,7 @@ class _SplashState extends State<Splash> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
+            SizedBox(
               width: 100,
               child: Image.asset('assets/images/IfsLogo.jpeg'),
             ),

@@ -3,11 +3,11 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:manual_de_sobrevivencia/values/custom_colors.dart';
-import 'package:manual_de_sobrevivencia/values/preferences_keys.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../models/userModels.dart';
+import '../../../shared/models/userModels.dart';
+import '../../../shared/values/custom_colors.dart';
+import '../../../shared/values/preferences_keys.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);

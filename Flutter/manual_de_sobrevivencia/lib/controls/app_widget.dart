@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:manual_de_sobrevivencia/login/login_page.dart';
 import 'package:manual_de_sobrevivencia/controls/splash.dart';
-import 'package:manual_de_sobrevivencia/login/register_page.dart';
-import 'package:manual_de_sobrevivencia/screen/Screen.dart';
 
-import '../login/login_page.dart';
+import '../pages/screen/Screen.dart';
+import '../pages/screen/home_page.dart';
+import '../pages/screen/login/login_page.dart';
+import '../pages/screen/login/register_page.dart';
 import 'app_controller.dart';
-import '../screen/home_page.dart';
 
 class AppWidget extends StatelessWidget {
   const AppWidget({Key? key}) : super(key: key);
