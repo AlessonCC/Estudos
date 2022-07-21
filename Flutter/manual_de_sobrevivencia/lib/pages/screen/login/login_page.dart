@@ -3,11 +3,12 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:manual_de_sobrevivencia/pages/screen/login/login_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../shared/models/login_model.dart';
-import '../../../shared/values/custom_colors.dart';
-import '../../../shared/values/preferences_keys.dart';
+import '../../../shared/constants/custom_colors.dart';
+import '../../../shared/constants/preferences_keys.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -22,7 +23,9 @@ class _LoginPageState extends State<LoginPage> {
   String email = '';
   String password = '';
   // ignore: non_constant_identifier_names
-  bool ContinueConnected = false;
+  bool _ObscurePassword = true;
+
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -55,11 +58,22 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   Container(height: 50),
                   Form(
+                    key: _formKey,
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Column(
                         children: [
                           TextFormField(
+                            validator: ((value) {
+                              if (value == null ||
+                                  value.length < 5 ||
+                                  value.isEmpty) {
+                                return "Usuário curto demais!";
+                              } else if (!value.contains("@")) {
+                                return "Usuário Inválido!";
+                              }
+                              return null;
+                            }),
                             controller: _mailInputController,
                             autofocus: true,
                             style: const TextStyle(color: Colors.black),
@@ -80,6 +94,14 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                           const SizedBox(height: 5),
                           TextFormField(
+                            validator: ((value) {
+                              if (value == null ||
+                                  value.length < 6 ||
+                                  value.isEmpty) {
+                                return "Usuário ou Senha Incorretos!";
+                              }
+                            }),
+                            obscureText: !_ObscurePassword,
                             controller: _passwordInputController,
                             autofocus: true,
                             style: const TextStyle(color: Colors.black),
@@ -118,28 +140,19 @@ class _LoginPageState extends State<LoginPage> {
                   Row(
                     children: [
                       Checkbox(
-                        value: ContinueConnected,
+                        value: _ObscurePassword,
                         onChanged: (bool? newValue) {
                           setState(() {
-                            ContinueConnected = newValue!;
+                            _ObscurePassword = newValue!;
                           });
                         },
                       ),
-                      const Text("Continue Connected?"),
+                      const Text("Show Password?"),
                     ],
                   ),
                   RaisedButton(
                     onPressed: () {
                       _doLogin();
-                      if (email == '' && password == '') {
-                        Navigator.of(context)
-                            .pushReplacementNamed('/loginAuthenticate');
-                      } else {
-                        ListView(children: [
-                          Container(height: 10),
-                          const Text('Insert Text'),
-                        ]);
-                      }
                     },
                     child: const Text(
                       'Login',
@@ -196,17 +209,28 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void _doLogin() async {
-    String mailForm = _mailInputController.text;
-    String passwordForm = _passwordInputController.text;
-
-    LoginModel savedUser = await _getSavedUser();
-    if (mailForm == savedUser.mail && passwordForm == savedUser.password) {
-      print("Login Efetuado Com Sucesso!");
-      Navigator.of(context).pushReplacementNamed('/loginAuthenticate');
+    if (_formKey.currentState?.validate() == true) {
+      LoginService().login(
+        _mailInputController.text,
+        _passwordInputController.text,
+      );
+      //Navigator.of(context).pushReplacementNamed('/loginAuthenticate');
     } else {
-      print("Login ou Senha Incorretos");
+      print("invalido");
     }
   }
+  // void _doLogin() async {
+  //   String mailForm = _mailInputController.text;
+  //   String passwordForm = _passwordInputController.text;
+
+  //  LoginModel savedUser = await _getSavedUser();
+  //   if (mailForm == savedUser.mail && passwordForm == savedUser.password) {
+  //    print("Login Efetuado Com Sucesso!");
+  //    Navigator.of(context).pushReplacementNamed('/loginAuthenticate');
+  // } else {
+  //    print("Login ou Senha Incorretos");
+  //   }
+  // }
 
   Future<LoginModel> _getSavedUser() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
