@@ -59,28 +59,43 @@ class _LoginPageState extends State<LoginPage> {
                       padding: const EdgeInsets.all(8.0),
                       child: Column(
                         children: [
-                          TextField(
+                          TextFormField(
                             controller: _mailInputController,
-                            onChanged: (text) {
-                              email = text;
-                            },
-                            keyboardType: TextInputType.emailAddress,
-                            // ignore: prefer_const_constructors
-                            decoration: InputDecoration(
-                              labelText: 'Login',
-                              border: const OutlineInputBorder(),
+                            autofocus: true,
+                            style: const TextStyle(color: Colors.black),
+                            decoration: const InputDecoration(
+                              labelText: "E-mail",
+                              labelStyle: TextStyle(
+                                color: Colors.black,
+                              ),
+                              prefixIcon: Icon(
+                                Icons.mail,
+                              ),
+                              focusedBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Colors.black,
+                                ),
+                              ),
                             ),
                           ),
                           const SizedBox(height: 5),
-                          TextField(
+                          TextFormField(
                             controller: _passwordInputController,
-                            onChanged: (text) {
-                              password = text;
-                            },
-                            obscureText: true,
+                            autofocus: true,
+                            style: const TextStyle(color: Colors.black),
                             decoration: const InputDecoration(
-                              border: OutlineInputBorder(),
-                              labelText: 'Password',
+                              labelText: "Password",
+                              labelStyle: TextStyle(
+                                color: Colors.black,
+                              ),
+                              prefixIcon: Icon(
+                                Icons.vpn_key,
+                              ),
+                              focusedBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Colors.black,
+                                ),
+                              ),
                             ),
                           ),
                         ],
@@ -145,7 +160,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   const Text(
                     "Do not have an account?",
-                    textAlign: TextAlign.left,
+                    textAlign: TextAlign.center,
                     style: TextStyle(fontSize: 12),
                   ),
                   RaisedButton(
