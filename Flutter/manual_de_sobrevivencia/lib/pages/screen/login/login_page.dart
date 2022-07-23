@@ -4,7 +4,7 @@ import 'dart:convert';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:manual_de_sobrevivencia/pages/screen/login/login_service.dart';
+import 'package:manual_de_sobrevivencia/pages/services/login_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../shared/models/login_model.dart';
@@ -69,9 +69,11 @@ class _LoginPageState extends State<LoginPage> {
                               if (value == null ||
                                   value.length < 5 ||
                                   value.isEmpty) {
-                                return "Usuário curto demais!";
+                                return "E-mail Inválido!";
                               } else if (!value.contains("@")) {
-                                return "Usuário Inválido!";
+                                return "E-mail Inválido!";
+                              } else if (!value.contains(".")) {
+                                return "E-mail Inválido!";
                               }
                               return null;
                             }),
@@ -97,9 +99,9 @@ class _LoginPageState extends State<LoginPage> {
                           TextFormField(
                             validator: ((value) {
                               if (value == null ||
-                                  value.length < 6 ||
+                                  value.length < 8 ||
                                   value.isEmpty) {
-                                return "Usuário ou Senha Incorretos!";
+                                return "E-mail ou Senha Incorretos!";
                               }
                             }),
                             obscureText: !_ObscurePassword,
@@ -129,9 +131,7 @@ class _LoginPageState extends State<LoginPage> {
                     padding: EdgeInsets.only(bottom: 7),
                   ),
                   GestureDetector(
-                    onTap: () {
-                      print('Clicou');
-                    },
+                    onTap: () {},
                     child: const Text(
                       'Forget Password?',
                       style: TextStyle(fontSize: 12),
@@ -208,25 +208,51 @@ class _LoginPageState extends State<LoginPage> {
         _mailInputController.text,
         _passwordInputController.text,
       );
-      Navigator.of(context).pushReplacementNamed('/loginAuthenticate');
+      loginUser();
     } else {
       print("invalido");
     }
   }
-/*Future<void> loginUser() async {
+
+  Future<void> loginUser() async {
     try {
-      
       await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: _mailInputController.text,
           password: _passwordInputController.text);
-      if (FirebaseAuth.instance.currentUser!.emailVerified) {
+      if (!FirebaseAuth.instance.currentUser!.emailVerified) {
         Navigator.of(context).pushReplacementNamed('/loginAuthenticate');
+      } else {
+        return showDialog<void>(
+          context: context,
+          barrierDismissible: false, // user must tap button!
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: const Text('AlertDialog Title'),
+              content: SingleChildScrollView(
+                child: ListBody(
+                  children: const <Widget>[
+                    Text('This is a demo alert dialog.'),
+                    Text('Would you like to approve of this message?'),
+                  ],
+                ),
+              ),
+              actions: <Widget>[
+                TextButton(
+                  child: const Text('Approve'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            );
+          },
+        );
       }
     } on FirebaseAuthException catch (e) {
       // ignore: avoid_print
       print(e);
     }
-  }*/
+  }
 
   // void _doLogin() async {
   //   String mailForm = _mailInputController.text;

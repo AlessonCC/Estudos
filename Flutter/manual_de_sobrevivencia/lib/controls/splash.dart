@@ -32,11 +32,11 @@ class _SplashState extends State<Splash> {
             Container(
               height: 20,
             ),
-            CircularProgressIndicator(),
+            const CircularProgressIndicator(),
             Container(
               height: 10,
             ),
-            Text('Loading...')
+            const Text('Loading...')
           ],
         ),
       ),
@@ -44,6 +44,6 @@ class _SplashState extends State<Splash> {
   }
 
   Future<void> _checkAuth() async {
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 1));
   }
 }

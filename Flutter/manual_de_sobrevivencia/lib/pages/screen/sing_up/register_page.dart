@@ -5,7 +5,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:manual_de_sobrevivencia/controls/Screen_page.dart';
 import 'package:manual_de_sobrevivencia/pages/screen/login/login_page.dart';
-import 'package:manual_de_sobrevivencia/pages/screen/sing_up/sing_up_service.dart';
+import 'package:manual_de_sobrevivencia/pages/services/sing_up_service.dart';
 import 'package:manual_de_sobrevivencia/shared/constants/custom_colors.dart';
 import 'package:manual_de_sobrevivencia/shared/constants/preferences_keys.dart';
 import 'package:manual_de_sobrevivencia/shared/models/login_model.dart';

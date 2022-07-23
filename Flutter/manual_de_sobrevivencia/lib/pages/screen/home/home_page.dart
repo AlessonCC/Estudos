@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:manual_de_sobrevivencia/pages/screen/home/home_widgets/home_appbar.dart';
 
-import '../../controls/app_controller.dart';
-import '../../controls/Screen_page.dart';
+import '../../../controls/app_controller.dart';
+import '../../../controls/Screen_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -60,7 +61,7 @@ class HomePageState extends State<HomePage> {
           ],
         ),
       ),
-      appBar: AppBar(title: const Text('Home Page')),
+      appBar: getHomeAppBar(),
       body: SizedBox(
         width: double.infinity,
         height: double.infinity,
