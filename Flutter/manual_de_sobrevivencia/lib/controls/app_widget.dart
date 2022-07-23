@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:manual_de_sobrevivencia/controls/splash.dart';
 import 'package:manual_de_sobrevivencia/pages/screen/sing_up/register_page.dart';
 
-import '../pages/screen/Screen_page.dart';
+import 'Screen_page.dart';
 import '../pages/screen/home_page.dart';
 import '../pages/screen/login/login_page.dart';
 import 'app_controller.dart';

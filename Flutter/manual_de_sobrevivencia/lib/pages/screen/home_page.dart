@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../controls/app_controller.dart';
-import 'Screen_page.dart';
+import '../../controls/Screen_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);

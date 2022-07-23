@@ -15,6 +15,7 @@ class SingUpService {
       ),
     );
 
+    // ignore: avoid_print
     print(response.body);
   }
 }

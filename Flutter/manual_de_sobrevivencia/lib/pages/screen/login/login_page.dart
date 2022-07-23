@@ -2,6 +2,7 @@
 
 import 'dart:convert';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:manual_de_sobrevivencia/pages/screen/login/login_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -23,7 +24,7 @@ class _LoginPageState extends State<LoginPage> {
   String email = '';
   String password = '';
   // ignore: non_constant_identifier_names
-  bool _ObscurePassword = true;
+  bool _ObscurePassword = false;
 
   final _formKey = GlobalKey<FormState>();
 
@@ -178,15 +179,8 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   RaisedButton(
                     onPressed: () {
-                      if (email == '' && password == '') {
-                        Navigator.of(context)
-                            .pushReplacementNamed('/registerPage');
-                      } else {
-                        ListView(children: [
-                          Container(height: 10),
-                          const Text('Insert Text'),
-                        ]);
-                      }
+                      Navigator.of(context)
+                          .pushReplacementNamed('/registerPage');
                     },
                     child: const Text(
                       'Register',
@@ -214,11 +208,26 @@ class _LoginPageState extends State<LoginPage> {
         _mailInputController.text,
         _passwordInputController.text,
       );
-      //Navigator.of(context).pushReplacementNamed('/loginAuthenticate');
+      Navigator.of(context).pushReplacementNamed('/loginAuthenticate');
     } else {
       print("invalido");
     }
   }
+/*Future<void> loginUser() async {
+    try {
+      
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: _mailInputController.text,
+          password: _passwordInputController.text);
+      if (FirebaseAuth.instance.currentUser!.emailVerified) {
+        Navigator.of(context).pushReplacementNamed('/loginAuthenticate');
+      }
+    } on FirebaseAuthException catch (e) {
+      // ignore: avoid_print
+      print(e);
+    }
+  }*/
+
   // void _doLogin() async {
   //   String mailForm = _mailInputController.text;
   //   String passwordForm = _passwordInputController.text;
